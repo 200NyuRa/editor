@@ -8,7 +8,7 @@ let counter = {
 
     init: function () {
         if (this.container) {
-            this.inputVal = this.inputVal.value;
+            this.inputVal = this.numInput.value;
             this.setUpListeners();
         }
     },

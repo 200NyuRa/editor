@@ -195,7 +195,6 @@ let app = {
         newPoint.x = event.pageX - this.paint.offsetLeft;
         newPoint.y = event.pageY - this.paint.offsetTop;
 
-        console.log(numPoint);
         this.arrPoints = [];
 
         if (this.arrLastTenPoints.length > 10) {

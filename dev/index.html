@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Графический редактор</title>
+    <link href="./static/css/main.css" rel="stylesheet">
+  </head>
+  <body class="page">
+    <div id="editor" class="editor">
+      <canvas id="paint" class="editor__paint">
+      </canvas>
+      <div class="editor__control">
+        <div class="editor__control-part">
+          <div class="title">Amount of points for connection
+          </div>
+          <div class="field field_number"><button class="btn btn_number btn_min">&#8722;</button><input name="pointNumber" type="text" id="pointNumber" class="field__input field__input_number field__input_center" value="2"/><button class="btn btn_number btn_max">+</button>
+          </div>
+        </div>
+        <div class="editor__control-part editor__control-part_margin_m">
+          <div class="title">Auto color selection
+          </div>
+          <div class="field-swich"><input type="radio" name="typeSwitchColor" value="typeSwitchColorAuto" id="typeSwitchColorAuto" checked="checked" class="field-swich__radio field-swich__radio_left field-swich__radio"/><input type="radio" name="typeSwitchColor" id="typeSwitchColorManually" class="field-swich__radio field-swich__radio_right field-swich__radio"/>
+            <label for="typeSwitchColorAuto" class="field-swich__label field-swich__label_left">Off
+            </label><span class="field-swich__led"></span>
+            <label for="typeSwitchColorManually" class="field-swich__label field-swich__label_right">On
+            </label>
+          </div>
+        </div>
+        <div class="editor__control-part">
+          <div class="editor__picker">
+            <div class="editor__picker-colors-wrapper"><span class="editor__picker-colors-indicator"></span>
+              <canvas id="picker-colors" class="editor__picker-colors">
+              </canvas>
+            </div>
+            <div class="editor__picker-controls">
+              <div class="editor__picker-row">
+                <label for="rgbVal" class="label label_val">Rgb
+                </label>
+                <div class="field field_val"><input type="text" id="rgbVal" class="field__input field__input_val" readonly="readonly"/>
+                </div>
+              </div>
+              <div class="editor__picker-row editor__picker-row_margin_m">
+                <label for="hexVal" class="label label_val">Hex
+                </label>
+                <div class="field field_val"><input type="text" id="hexVal" class="field__input field__input_val" readonly="readonly"/>
+                </div>
+              </div>
+              <div class="editor__picker-preview">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn_clear editor__clear">clear editor
+        </button>
+      </div>
+    </div>
+    <script src="./static/js/main.js"></script>
+  </body>
+</html>
