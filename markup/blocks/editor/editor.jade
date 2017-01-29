@@ -1,0 +1,89 @@
+include ../form/form
+include ../btn/btn
+include ../title/title
+
+mixin editor(data)
+    +b.editor#editor
+        +e('canvas').__paint#paint
+
+        +e.__control
+            +e.__control-part
+                +title({
+                    tag: 'div',
+                    title: 'Amount of points for connection'
+                })
+                +field({
+                    preInput: '<button class="btn btn_number btn_min">&#8722;</button>',
+                    postInput: '<button class="btn btn_number btn_max">+</button>',
+                    mod: '_number',
+                    type: 'text',
+                    name: 'pointNumber',
+                    id: 'pointNumber'
+                })(
+                    value= 2
+                )._number._center
+
+            +e.__control-part._margin_m
+
+                +title({
+                    tag: 'div',
+                    title: 'Auto color selection'
+                })
+
+                +field-swich({
+                    radios: [{
+                        type: 'radio',
+                        mod: ['left'],
+                        name: 'typeSwitchColor',
+                        value: 'typeSwitchColorAuto',
+                        id: 'typeSwitchColorAuto',
+                        checked: true
+                    },
+                    {
+                        type: 'radio',
+                        mod: ['right'],
+                        name: 'typeSwitchColor',
+                        typeSwitchColorAuto: 'typeSwitchColorManually',
+                        id: 'typeSwitchColorManually'
+                    }],
+                    labels: [
+                        {
+                            text: 'Off',
+                            mod: '_left'
+                        },
+                        {
+                            text: 'On',
+                            mod: '_right'
+                        }
+                    ]
+                })
+
+            +e.__control-part
+                +e.__picker
+                    +e.__picker-colors-wrapper
+                        +e('span').__picker-colors-indicator
+                        +e('canvas').__picker-colors#picker-colors
+
+                    +e.__picker-controls
+                        +e.__picker-row
+                            +field({
+                                mod: '_val',
+                                label: 'Rgb',
+                                labelMod: '_val',
+                                type: 'text',
+                                id: 'rgbVal'
+                            })(readonly= true)._val
+                        +e.__picker-row_margin_m
+                            +field({
+                                mod: '_val',
+                                label: 'Hex',
+                                labelMod: '_val',
+                                type: 'text',
+                                id: 'hexVal'
+                            })(readonly = true)._val
+                        +e.__picker-preview
+
+            +btn({
+                tag: 'button',
+                text: 'clear editor'
+            })._clear.__clear

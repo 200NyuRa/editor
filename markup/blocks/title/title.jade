@@ -1,0 +1,4 @@
+mixin title(data)
+    - data = data || {};
+
+    +b(data.tag ? data.tag : 'h2').title!= data.title

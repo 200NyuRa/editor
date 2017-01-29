@@ -1,0 +1,7 @@
+$titleSelector: '.title';
+
+#{$titleSelector} {
+    @extend %text-title;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}

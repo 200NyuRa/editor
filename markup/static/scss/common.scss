@@ -1,0 +1,77 @@
+body {
+
+    font-family: "OpenSans", "Helvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    background: $white;
+    color: rgba($real-black, .6);
+    @extend %text_s;
+    letter-spacing: .3px;
+}
+
+//typography
+%text {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+%text_s {
+    font-size: 14px;
+    line-height: 1.43;
+}
+
+
+%text_m {
+    font-size: 16px;
+    line-height: 1.31;
+}
+
+%text-title {
+    font-size: 22px;
+    line-height: 1.16;
+}
+
+%text-title_l {
+    font-size: 35px;
+    line-height: 1;
+}
+
+%text-title_s {
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+%text-title_xs {
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+//reset styles
+a {
+    text-decoration: none;
+    color: $black;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}

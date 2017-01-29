@@ -1,0 +1,15 @@
+include ./../../node_modules/bemto.jade/bemto
+
+extends ../blocks/layout-default/layout-default
+include ../blocks/editor/editor
+
+block head
+    - pageTitle = 'Графический редактор';
+    - pageDescription = '';
+    - pageContainerNot = true;
+    - symbols = false;
+
+block content
+    +editor
+
+

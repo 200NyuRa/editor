@@ -1,0 +1,8 @@
+//fonts
+//---------------
+//Areal
+@include font-face("Arial", 700, normal);
+
+//OpenSans-Bold
+@include font-face("OpenSans", 700, normal, $local-list: "OpenSans-Bold" "Open Sans Bold" "Open-Sans-Bold", $file-folder: OpenSans-Bold);
+

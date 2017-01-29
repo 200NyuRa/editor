@@ -1,0 +1,159 @@
+$lableSelector: ".label";
+
+#{$lableSelector} {
+    display: block;
+    margin-bottom: 5px;
+    @extend %text_s;
+    color: rgba(#000, .7);
+    transition: all .3s ease-in-out;
+
+    &_val {
+        display: inline-block;
+        vertical-align: middle;
+        width: 32px;
+        margin-bottom: 0;
+    }
+}
+
+$fieldSelector: ".field";
+
+#{$fieldSelector} {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+
+    &_val {
+        width: 90px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+
+    &_number {
+        width: 150px;
+        position: relative;
+    }
+
+    &__input {
+        display: inline-block;
+        width: 100%;
+        background-color: $white;
+        padding: 9px 5px;
+        color: #121212;
+        border-radius: 5px;
+        @extend %text;
+        outline: 0;
+        transition: border-color .3s ease-in-out;
+        text-transform: uppercase;
+        border: 2px solid #e5e5e5;
+        font-weight: 700;
+
+        &:hover {
+            border-color: #d5d5d5;
+        }
+
+        @include placeholder {
+            color: #d0cece;
+
+            &:focus {
+                color: transparent;
+            }
+        }
+
+        &:focus {
+            border-color: #bbb;
+        }
+
+        &_center {
+            text-align: center;
+        }
+
+        &_number {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+}
+
+
+$fieldSwichSelector: ".field-swich";
+
+#{$fieldSwichSelector} {
+    position: relative;
+    width: 150px;
+    text-align: center;
+    font-size: 0;
+
+    &__label {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        @extend %text_s;
+        color: rgba(#666666, .7);
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            color: rgba(#000, .7);
+        }
+    }
+
+    &__led {
+        display: inline-block;
+        vertical-align: middle;
+        width: 76px;
+        margin: 0 8px;
+        height: 40px;
+        border: 2px solid #e5e5e5;
+        border-radius: 22px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            border-color: #d5d5d5;
+
+            &:after {
+                background-color: #f04444;
+            }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 10px;
+            background-color: #ff7272;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    &__radio {
+        display: none;
+
+        &_left {
+            &:checked ~ #{$fieldSwichSelector}__label_left {
+                color: #ff7272;
+            }
+
+            &:checked ~ #{$fieldSwichSelector}__led:after {
+                left: 9px;
+            }
+        }
+
+        &_right {
+            &:checked ~ #{$fieldSwichSelector}__label_right {
+                color: #ff7272;
+            }
+
+            &:checked ~ #{$fieldSwichSelector}__led:after {
+                left: 44px;
+                transition: all .3s ease-in-out;
+            }
+        }
+    }
+}
+
+
+

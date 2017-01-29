@@ -1,0 +1,77 @@
+@import "vars";
+
+//font
+@mixin font-face($family, $font-weight, $font-style, $local-list:false, $file-folder: false) {
+    $file-name: $family;
+    $file-folder: if($file-folder, $file-folder, $family);
+    $file-name: $file-folder;
+    $file-path: '../fonts/#{$file-folder}/#{$file-name}';
+
+    @font-face {
+        font-family: $family;
+        @if($local-list){
+            @if(length($local-list) == 4){
+                src: local(quote(nth($local-list, 1))), local(quote(nth($local-list, 2))), local(quote(nth($local-list, 3))), local(quote(nth($local-list, 4)));
+            }
+            @else if(length($local-list) == 3){
+                src: local(quote(nth($local-list, 1))), local(quote(nth($local-list, 2))), local(quote(nth($local-list, 3)));
+            }
+            @else if(length($local-list) == 2){
+                src: local(quote(nth($local-list, 1))), local(quote(nth($local-list, 2)));
+            } @else if(length($local-list) == 1){
+                src: local(quote(nth($local-list, 1)));
+            }
+        }
+        src: url('#{$file-path}.woff2') format('woff2'),
+             url('#{$file-path}.woff') format('woff');
+        font-weight: $font-weight;
+        font-style: $font-style;
+    }
+}
+
+//clearfix
+@mixin clearfix() {
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+}
+
+//box-sizing
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+//make-grid
+@mixin grid-row-direction ($reverse:false) {
+    @if ($reverse) {
+        flex-direction: row-reverse;
+    } @else {
+        flex-direction: row;
+    }
+}
+
+@mixin container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: $max-width;
+}
+
+@mixin row ($reverse:false) {
+    @include clearfix();
+}
+
+//for form
+$pseudo-phprefix: "::-webkit-input-placeholder" "::-moz-placeholder" ":-ms-input-placeholder" "::placeholder";
+
+@mixin placeholder {
+    @each $pseudo in $pseudo-phprefix {
+
+        @at-root #{&}#{$pseudo} {
+            @content
+        }
+    }
+}

@@ -1,0 +1,93 @@
+$editorSelector: ".editor";
+
+#{$editorSelector} {
+    display: block;
+    position: relative;
+    user-select: none;
+    background: $grey;
+    margin: 0 auto;;
+
+    &__paint {
+        box-shadow: 0 0 2px rgba($grey-dark, .6);
+        display: block;
+        background-color: $white;
+    }
+
+    &__control {
+        width: 350px;
+        background: $white;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        padding: 15px;
+        color: rgba($real-black, .7);
+        box-shadow: 0 0 1px rgba($grey-dark, .6);
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+
+    &__control-part {
+        margin-bottom: 35px;
+
+        &_margin_m {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__picker {
+        position: relative;
+    }
+
+    &__picker-colors-wrapper {
+        position: relative;
+        width: 170px;
+        height: 170px;
+        border-radius: 1000px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    &__picker-colors-indicator {
+        display: block;
+        position: absolute;
+        top: 77px;
+        left: 77px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid $grey;
+        z-index: 1;
+    }
+
+    &__picker-colors {
+        display: block;
+        border-radius: 1000px;
+        overflow: hidden;
+    }
+
+    &__picker-controls {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+
+    &__picker-row {
+        margin-bottom: 5px;
+        font-size: 0;
+
+        &_margin_m {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__picker-preview {
+        background-color: $black;
+        height: 32px;
+        width: 90px;
+        box-shadow: 0 0 0 1px #e5e5e5;
+
+        margin-right: 0;
+        margin-left: auto;
+    }
+}

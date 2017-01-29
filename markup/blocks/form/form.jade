@@ -1,0 +1,127 @@
+//mixin form(data)
+//    //шпаргалка стркутура формы
+//    .form
+//        .form__fieldset
+//            .form__title
+//            .form__row
+//                .form__col
+//                    .form__item
+//                    .form__item
+//                    .form__item
+//                .form__col
+//                    .form__item
+//                    .form__item
+//                    .form__item
+//
+//            .form__row
+//                .form__col
+//                    .form__item
+//                    .form__item
+//                    .form__item
+//                .form__col
+//                    .form__item
+//                    .form__item
+//                    .form__item
+
+mixin label(data)
+    +b('label').label(class=data.mod for=data.id)!= data.title
+
+mixin field(data)
+
+    if data.type === 'text' || data.type === 'password' || data.type === 'email' || data.type === 'textarea' || data.type === 'select' || data.type === 'file'
+        if data.label
+            +label({
+                id: data.id,
+                title: data.label,
+                mod: data.labelMod
+            })
+
+        if data.type === 'hidden'
+            +b('input').field-hidden(
+                name=data.name
+                type=data.type
+            )&attributes(attributes)
+
+        if data.type === 'text' || data.type === 'password' || data.type === 'email'
+
+            +b.field(class= data.mod)
+                if (data.preInput)
+                    !=data.preInput
+                +e('input').__input(
+                    name=data.name
+                    type=data.type
+                    id=data.id
+                    placeholder=data.placeholder
+                )&attributes(attributes)
+                if (data.postInput)
+                    !=data.postInput
+                block
+
+        if data.type === 'textarea'
+            +b.field(class= data.mod)
+                +e('textarea').__input._textarea(
+                    type=data.type id=data.id
+                    placeholder=data.placeholder
+                )&attributes(attributes)
+                    !=data.value
+                block
+
+        if data.type === 'file'
+            +b.field(class= data.mod)
+                +e('label').__label-upload(for=data.id)!= data.label
+                    input.__input._upload(
+                        type=data.type
+                        id=data.id
+                    )&attributes(attributes)
+                block
+
+        if data.type === 'select'
+            +b.field(class= data.mod)
+                +e('select').__input._select(id=data.id)&attributes(attributes)
+                    each option in data.options
+                        option(value=option)= option
+                block
+
+        if data.type === 'checkbox'
+            +b.checkbox(class= data.mod)
+                +e('input').__input(
+                    type=data.type
+                    name=data.name
+                    checked= data.checked ? 'true' : 'false'
+                )&attributes(attributes)
+                    +e('label').__label(for=data.id)(class= data.checkboxLabelMod)!= data.label
+                block
+
+        if data.type === 'radio'
+            +b.radio
+                +e('input').__input(
+                    name=data.name
+                    value=data.value
+                    type=data.type
+                    checked= data.checked ? 'true' : 'false'
+                )&attributes(attributes)
+                    +e('label').__label(for=data.id)(class= data.cradioLabelMod)!= data.label
+                block
+
+mixin field-swich(data)
+    - radios = data.radios || []
+    - labels = data.labels || []
+
+    +b.field-swich(class= data.mod)
+        each radio in radios
+            +e('input')(
+                type= radio.type
+                name = radio.name
+                value= radio.value
+                id= radio.id
+                checked= radio.checked ? true : false
+                class!= '__radio_#{radio.mod}'
+            ).__radio
+
+        each label, index in data.labels
+            +e('label').__label(
+                for= data.radios[index ].id
+                class= label.mod
+            )!= label.text
+            if(index === 0)
+                +e('span').__led

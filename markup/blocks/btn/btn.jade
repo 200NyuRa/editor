@@ -1,0 +1,20 @@
+mixin btn(data)
+    - data = data || {};
+
+    if(data.tag=='a')
+        +b('a').btn(
+        href= data.href ? data.href : '#'
+        )&attributes(attributes)=data.text
+        block
+
+    if(data.tag=='button')
+        +b('button').btn(
+        type= data.type ? data.type : null
+        )&attributes(attributes)=data.text
+            block
+
+    if(data.tag == 'input')
+        +b('input').btn(
+            type=data.type
+            value=data.value
+        )&attributes(attributes)
